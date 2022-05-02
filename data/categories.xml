@@ -1,0 +1,77 @@
+<Categories>
+    <categorie>
+        <nom>Nouveautés</nom>
+        <id>c01</id>
+        <description>Nouveaux produits disponibles sur le site</description>
+    </categorie>
+    <categorie>
+        <nom>Animaux</nom>
+        <id>c02</id>
+        <description>Peluches d'animaux de tout genres !</description>
+        <sous_categorie>
+            <nom>Savane</nom>
+            <id>c02s01</id>
+            <description>Animaux de la savane</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Jungle</nom>
+            <id>c02s02</id>
+            <description>Animaux de la jungle</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Mer</nom>
+            <id>c02s03</id>
+            <description>Animaux marins</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Fantastique</nom>
+            <id>c02s04</id>
+            <description>Animaux fantastiques</description>
+        </sous_categorie>
+    </categorie>
+    <categorie>
+        <nom>Pop-culture</nom>
+        <id>c03</id>
+        <description>Peluches venant de la pop-culture sous tous ses aspects !</description>
+        <sous_categorie>
+            <nom>Manga</nom>
+            <id>c03s01</id>
+            <description>Peluches de mangas</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Jeu Vidéo</nom>
+            <id>c03s02</id>
+            <description>Peluches de jeux vidéo</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Film</nom>
+            <id>c03s03</id>
+            <description>Peluches de films</description>
+        </sous_categorie>
+    </categorie>
+    <categorie>
+        <nom>Autre</nom>
+        <id>c04</id>
+        <description>Autres peluches</description>
+        <sous_categorie>
+            <nom>Nourriture</nom>
+            <id>c04s01</id>
+            <description>Peluches de nourriture</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Emoji</nom>
+            <id>c04s02</id>
+            <description>Peluches d'emojis</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Plante</nom>
+            <id>c04s03</id>
+            <description>Peluches de plantes</description>
+        </sous_categorie>
+    </categorie>
+    <categorie>
+        <nom>Soldes</nom>
+        <id>c05</id>
+        <description>Produits en soldes et en tout genres !</description>
+    </categorie>
+</Categories>
