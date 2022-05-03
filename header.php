@@ -9,7 +9,7 @@
         <h1>PluShop</h1>
         <nav>
             <ul id="menu">
-                <li><a href="index.php">Acceuil</a></li>
+                <li><a href="index.php">Accueil</a></li>
 
                 <?php
                     if(file_exists("./data/categories.xml")) {
@@ -19,12 +19,11 @@
                     }
 
                     foreach($xml->categorie as $categorie) {
-                        //revoir le str_replace, à améliorer + problème avec un espace
-                        echo("<li><a href='" . str_replace(array('é', 'è', 'ê'), 'e', strtolower($categorie->nom)) . ".php'>" . $categorie->nom . "</a>");
+                        echo("<li><a href='categorie.php?cat=" . $categorie->id . "'>" . $categorie->nom . "</a>");
                         if(isset($categorie->sous_categorie)) {
                             echo("<ul class='sous'>");
                             foreach($categorie->sous_categorie as $sous_categorie) {
-                                echo("<li><a href='" . str_replace(array('é', 'è', 'ê'), 'e', strtolower($sous_categorie->nom)) . ".php'>" . $sous_categorie->nom . "</a>");
+                                echo("<li><a href='categorie.php?cat=" . $sous_categorie->id . "'>" . $sous_categorie->nom . "</a>");
                             }
                             echo("</ul>");
                         }

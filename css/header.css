@@ -24,15 +24,33 @@ header {
     margin-bottom: 50px;
 }
 
+#menu {
+    display: flex;
+    flex-direction: row;
+    margin : 0;
+    padding: 0;
+}
+
+#menu>li {
+    flex-grow: 1;
+}
+
 nav{
     width: 100%;
     margin: 0 auto;
+    background-color: white;
     position: sticky;
     top: 0px;
 }
 
 nav ul {
     list-style-type: none;
+}
+
+nav ul li {
+    float: left;
+    text-align: center;
+    position: relative;
 }
 
 nav ul::after {
@@ -55,19 +73,13 @@ nav a:hover{
 }
 
 .sous{
+    padding: 0;
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
     position: absolute;
-    width: 80.5%;
+    width: 100%;
     z-index: 1000;
-}
-
-nav ul li {
-    float: left;
-    width: 14%;
-    text-align: center;
-    position: relative;
 }
 
 nav > ul li:hover .sous{
