@@ -1,4 +1,5 @@
 <?php 
+    include 'php/Fonction_Compte.php';
     if(isset($_POST['submit'])){
         $user = array();
         $user['login'] = $_POST['Login'];
