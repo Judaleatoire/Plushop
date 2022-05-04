@@ -15,21 +15,23 @@
             }
 
             $id = explode('=', $_SERVER['QUERY_STRING']);
+            if(isset($id[1])) {
+                $id = explode('s', $id[1])[0];
+            }
 
-            //ajouter les sous catégories lorque l'on est dans une catégorie (voir dessin)
             foreach($xml->categorie as $categorie) {
-                if(isset($id[1])) {
-                    if($categorie->id != $id[1]) {
-                        echo("<li><a href='index.php'>" . $categorie->nom . "</a></li>");
+                echo("<li><a href='categorie.php?cat=" . $categorie->id . "'>" . $categorie->nom . "</a>");
+                if($categorie->id == $id) {
+                    echo("<br><ul>");
+                    foreach($categorie->sous_categorie as $sous_categorie) {
+                        echo("<li><a href='categorie.php?cat=" . $sous_categorie->id . "'>" . $sous_categorie->nom . "</a>");
                     }
-                } else {
-                    echo("<li><a href='index.php'>" . $categorie->nom . "</a></li>");
-                }          
+                    echo("</ul>");
+                }
             }
         ?>
 
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href='contact.php'>Contact</a></li>
     </ul>
-
     
 </aside>

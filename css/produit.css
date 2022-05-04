@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+
+.flexbox-contenu {
+    display: flex;
+    flex-direction: row;
+}
+
+#produit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#main {
+    margin: 1%;
+    width: 98%;
+    min-width: 1650px;
+    min-height: 600px;
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+}
+
+#choix-img {
+    min-width: 5%;
+    height: 100%;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+}
+
+#choix-img>img {
+    width: 100%;
+    height: 14.3%;
+}
+
+#image {
+    min-width: 35.9%;
+    height: 100%;
+    background-color: orange;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#mainInfo {
+    min-width: 59.1%;
+    height: 100%;
+    background-color: aqua;
+}
+
+#mainInfo>div {
+    margin-left: 40%;
+    margin-top: 5%;
+}
+
+#quantite {
+    width: 5%;
+}
+
+#suppInfo {
+    margin: 1%;
+    width: 98%;
+    min-width: 1650px;
+    min-height: 300px;
+    background-color: red;
+}
+
+#sugg {
+    margin: 1%;
+    width: 98%;
+    min-width: 1650px;
+    min-height: 200px;
+    background-color: yellow;
+}
+
+#sugg-produits {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#sugg-produits>img {
+    margin: 10px;
+    height: 100%;
+    width: 15%;
+}
