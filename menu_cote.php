@@ -14,14 +14,22 @@
                 exit("Le fichier n'a pas pu être ouvert...");
             }
 
-            $nom_page = explode('.', basename($_SERVER['PHP_SELF']))[0];
+            $id = explode('=', $_SERVER['QUERY_STRING']);
 
+            //ajouter les sous catégories lorque l'on est dans une catégorie (voir dessin)
             foreach($xml->categorie as $categorie) {
-                if(str_replace(array('é', 'è', 'ê'), 'e', strtolower($categorie->nom)) != $nom_page) {
+                if(isset($id[1])) {
+                    if($categorie->id != $id[1]) {
+                        echo("<li><a href='index.php'>" . $categorie->nom . "</a></li>");
+                    }
+                } else {
                     echo("<li><a href='index.php'>" . $categorie->nom . "</a></li>");
-                }
+                }          
             }
         ?>
+
+        <li><a href="contact.php">Contact</a></li>
     </ul>
+
     
 </aside>
