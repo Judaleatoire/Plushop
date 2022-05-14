@@ -14,17 +14,24 @@
                 exit("Le fichier n'a pas pu être ouvert...");
             }
 
+            // $id = explode('=', $_SERVER['QUERY_STRING']);
+            // if(isset($id[1])) {
+            //     $id = explode('s', $id[1])[0];
+            // }
+
             $id = explode('=', $_SERVER['QUERY_STRING']);
             if(isset($id[1])) {
-                $id = explode('s', $id[1])[0];
+                $id = explode('-', $id[1])[0];
             }
 
             foreach($xml->categorie as $categorie) {
-                echo("<li><a href='categorie.php?cat=" . $categorie->id . "'>" . $categorie->nom . "</a>");
+                // echo("<li><a href='categorie.php?cat=" . $categorie->id . "'>" . $categorie->nom . "</a>");
+                echo("<li><a href='categorie.php?cat=$categorie->id'>$categorie->nom</a>");
                 if($categorie->id == $id) {
                     echo("<br><ul>");
                     foreach($categorie->sous_categorie as $sous_categorie) {
-                        echo("<li><a href='categorie.php?cat=" . $sous_categorie->id . "'>" . $sous_categorie->nom . "</a>");
+                        // echo("<li><a href='categorie.php?cat=" . $categorie->id . $sous_categorie->id . "'>" . $sous_categorie->nom . "</a>");
+                        echo("<li><a href='categorie.php?cat=$categorie->id$sous_categorie->id'>$sous_categorie->nom</a>");
                     }
                     echo("</ul>");
                 }

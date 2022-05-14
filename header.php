@@ -19,11 +19,13 @@
                     }
 
                     foreach($xml->categorie as $categorie) {
-                        echo("<li><a href='categorie.php?cat=" . $categorie->id . "'>" . $categorie->nom . "</a>");
+                        // echo("<li><a href='categorie.php?cat=" . $categorie->id . "'>" . $categorie->nom . "</a>");
+                        echo("<li><a href='categorie.php?cat=$categorie->id'>$categorie->nom</a>");
                         if(isset($categorie->sous_categorie)) {
                             echo("<ul class='sous'>");
                             foreach($categorie->sous_categorie as $sous_categorie) {
-                                echo("<li><a href='categorie.php?cat=" . $sous_categorie->id . "'>" . $sous_categorie->nom . "</a>");
+                                // echo("<li><a href='categorie.php?cat=" . $categorie->id . $sous_categorie->id . "'>" . $sous_categorie->nom . "</a>");
+                                echo("<li><a href='categorie.php?cat=$categorie->id-$sous_categorie->id'>$sous_categorie->nom</a>");
                             }
                             echo("</ul>");
                         }
