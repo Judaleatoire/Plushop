@@ -16,44 +16,54 @@ body {
 #main {
     margin: 1%;
     width: 98%;
-    /* height: 600px; */
-    height: 51%;
+    height: 600px;
     background-color: blue;
     display: flex;
     flex-direction: row;
 }
 
-#choix {
+#choix-img {
     width: 10%;
     height: 600px;
     background-color: green;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-items: flex-start;
+    flex-grow: 1;
 }
 
-.div-choix-image {
+#choix-image {
     width: 90%;
-    height: 25%;
     margin: 10px;
-}
-
-.choix-image {
-    width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 #image {
     background-color: orange;
-    /* width: 600px; */
-    width: 35%;
-    height: 600px;
+    flex-grow: 2;
 }
 
-#image>img {
-    width: 90%;
-    height: 90%;
-    margin: 5%;
+#image:hover, #image:active {
+    cursor: zoom-in;
+    display: block;
+}
+
+#image:hover #zoom, #image:active #zoom {
+    opacity: 1;
+}
+
+#zoom {
+    width: 340px;
+    height: 340px;
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.3);
+    pointer-events: none;
+    position: absolute;
+    opacity: 0;
+    border: 4px solid whitesmoke;
+    z-index: 99;
+    border-radius: 100%;
+    display: block;
+    transition: opacity .2s;
 }
 
 #mainInfo {
