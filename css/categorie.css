@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+}
+
+.flexbox-contenu {
+    display: flex;
+    flex-direction: row;
+}
+
+.produits {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 400px;
+    height: 400px;
+    margin: 30px;
+}

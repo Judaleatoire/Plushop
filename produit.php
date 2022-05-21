@@ -11,38 +11,15 @@
 
 <body>
 
-    <?php include "header.php"; ?>
-
     <?php
+        include "./php/chercher_produit.php";
+        include "./php/test_page.php";
 
-    // if(file_exists("./data/produits.csv")) {
-    //     $csv = file("data/produits.csv");
-    // } else {
-    //     exit("Le fichier n'a pas pu être ouvert...");
-    // }
-
-    // $produits = array();
-
-    // foreach($csv as $ligne) {
-    //     $produits[] = explode(",", $ligne);
-    // }
-
-    // foreach($produits as $case) {
-    //     echo("<ul>");
-    //     foreach($case as $souscase) {
-    //         echo("<li>$souscase</li>");
-    //     }
-    //     echo("</ul>");
-    // }
-
-    // $id = explode('=', $_SERVER['QUERY_STRING']);
-    // if(isset($id[1])) {
-    //     $id = $id[1];
-    // }
-
-    // echo($id);
-
+        //A RETRAVAILLER
+        // test_page($_SERVER['QUERY_STRING']);
     ?>
+
+    <?php include "header.php"; ?>
 
     <div class="flexbox-contenu">
 
@@ -55,44 +32,56 @@
                 exit("Le fichier n'a pas pu être ouvert...");
             }
         
-            $produits = array();
-        
-            foreach($csv as $ligne) {
-                $produits[] = explode(",", $ligne);
-            }
+            $produit = array();
 
             $id = explode('=', $_SERVER['QUERY_STRING']);
             if(isset($id[1])) {
                 $id = $id[1];
+            } else {
+                header("location: index.php");
+            }
+            $id_tab = explode('-', $id);
+
+            $produit = chercher_produit($csv, $id);
+
+            if($produit == -1) {
+                header("location: index.php");
             }
 
-            $position_produit = 0;
-            while($produits[$position_produit][0] != $id) {
-                $position_produit++;
-            }
+            // foreach($produit as $clé => $valeur) {
+            //     echo("$clé => ");
+            //     if(is_array($valeur)) {
+            //         foreach($valeur as $val) {
+            //             echo("$val ");
+            //         }
+            //     } else {
+            //         echo("$valeur");
+            //     }
+            //     echo("<br>");
+            // }
         ?>
 
         <div id="produit">
             <section id="main">
 
-                <div id="choix-img">
+                <div id="choix">
                     <?php
                         $i = 1;
 
-                        while(file_exists("./img/$id-$i.png")) {
-                            echo("<img src='./img/$id-$i.png' alt='./img/$id-$i'>");
+                        while(file_exists("./img/$id_tab[0]/$id_tab[1]/$id_tab[2]/$id-$i.png")) {
+                            echo("<div class='div-choix-image'><img src='./img/$id_tab[0]/$id_tab[1]/$id_tab[2]/$id-$i.png' alt='./img/$id_tab[0]/$id_tab[1]/$id_tab[2]/$id-$i' class='choix-image'></div>");
                             $i++;
                         }
                     ?>
                 </div>
 
                 <div id="image">
-                    <?php echo("<img src='./img/$id-1.png' alt='./img/$id-1'>"); ?>
+                    <?php echo("<img src='./img/$id_tab[0]/$id_tab[1]/$id_tab[2]/$id-1.png' alt='./img/$id_tab[0]/$id_tab[1]/$id_tab[2]/$id-1.png' id='image-principale'>"); ?>
                 </div>
 
                 <div id="mainInfo">
-                    <div id="nom-produit"><?php echo($produits[$position_produit][1]); ?></div>
-                    <div id="prix"><?php echo($produits[$position_produit][3]); ?>€</div>
+                    <div id="nom-produit"><?php echo($produit['nom']); ?></div>
+                    <div id="prix"><?php echo($produit["prix"]); ?>€</div>
                     <div id="zone-ajout-panier">
                         <button id="modif-ajout">-</button>
                         <input type="text" name="quantite" id="quantite" value="1" readonly>
@@ -100,7 +89,7 @@
                         <br><br>
                         <button id="ajout-panier">Ajouter au panier</button>
                     </div>
-                    <div id="description"><?php echo($produits[$position_produit][2]); ?></div>
+                    <div id="description"><?php echo($produit['desc']); ?></div>
                 </div>
 
             </section>
@@ -108,9 +97,9 @@
             <section id="suppInfo">
                 <h2>Informations supplémentaires</h2>
                 <div>
-                    Marque : <?php echo($produits[$position_produit][9]); ?><br>
-                    Taille : <?php echo($produits[$position_produit][8]); ?><br>
-                    Age : <?php echo($produits[$position_produit][7]); ?><br>
+                    Marque : <?php echo($produit['marque']); ?><br>
+                    Taille : <?php echo($produit['taille']); ?><br>
+                    Age : <?php echo($produit['age']); ?><br>
                     Plus d'autres infos<br>
                 </div>
             </section>
@@ -132,6 +121,8 @@
     <?php include "footer.php"; ?>
 
     <script src="./js/change_quantite.js?v=2"></script>
+    <script src="./js/change_image_page_produit.js?v=2"></script>
+    <script src="./js/zoom.js?v=2"></script>
 
 </body>
 

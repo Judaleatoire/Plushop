@@ -16,41 +16,51 @@ body {
 #main {
     margin: 1%;
     width: 98%;
-    min-width: 1650px;
-    min-height: 600px;
+    /* height: 600px; */
+    height: 51%;
     background-color: blue;
     display: flex;
     flex-direction: row;
 }
 
-#choix-img {
-    min-width: 5%;
-    height: 100%;
+#choix {
+    width: 10%;
+    height: 600px;
     background-color: green;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
-#choix-img>img {
+.div-choix-image {
+    width: 90%;
+    height: 25%;
+    margin: 10px;
+}
+
+.choix-image {
     width: 100%;
-    height: 14.3%;
+    height: 100%;
 }
 
 #image {
-    min-width: 35.9%;
-    height: 100%;
     background-color: orange;
+    /* width: 600px; */
+    width: 35%;
+    height: 600px;
 }
 
-img {
-    width: 100%;
-    height: 100%;
+#image>img {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
 }
 
 #mainInfo {
-    min-width: 59.1%;
+    width: 50%;
     height: 100%;
     background-color: aqua;
+    flex-grow: 3;
 }
 
 #mainInfo>div {
@@ -65,16 +75,12 @@ img {
 #suppInfo {
     margin: 1%;
     width: 98%;
-    min-width: 1650px;
-    min-height: 300px;
     background-color: red;
 }
 
 #sugg {
     margin: 1%;
     width: 98%;
-    min-width: 1650px;
-    min-height: 200px;
     background-color: yellow;
 }
 
