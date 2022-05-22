@@ -1,5 +1,5 @@
 <?php 
-    include 'php/Fonction_Compte.php';
+    include 'php/fonction_Compte.php';
     if(isset($_POST['submit'])){
         
         $user = array();//creer les donnees sur le nouvel utilisateur

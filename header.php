@@ -46,5 +46,10 @@
             </svg>
         </a>
         <a href="identification.php">Connexion</a>
+        <?php 
+        if(isset($_SESSION['pseudo'])){
+            printf("%s",$_SESSION['pseudo']);
+        }
+        ?>
     </div>
 </header>

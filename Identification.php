@@ -1,8 +1,11 @@
 <?php
-  include 'php/Fonction_Compte.php';
+  include 'php/fonction_Compte.php';
 
 
   if(isset($_POST['submit'])){
+
+    var_dump($_POST);//test
+
     $user = array();//prend les donnees envoyé par l'utilisateur
     $user['login'] = $_POST['Login'];
     $user['password'] = $_POST['Password'];
@@ -11,7 +14,9 @@
 
     $js = json_decode($js, true);
 
-    if(($i = recherche_email($user['login']) != -1)&&($user['password'] == $js[$i]['password'])){//verifie que l'email et le mdp sont correct
+    $i = recherche_email($user['login']);//cherche dans la base de donnée le numéro de l'utilisateur
+
+    if(($i != -1)&&($user['password'] == $js[$i]['password'])){//verifie que l'email et le mdp sont correct
       session_start();
       $_SESSION['login'] = $js[$i]['login'];
       $_SESSION['pseudo'] = $js[$i]['pseudo'];
