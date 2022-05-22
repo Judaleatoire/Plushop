@@ -23,12 +23,12 @@
 <head>
     <title>Création de compte Plushop</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/Identification.css">
+    <link rel="stylesheet" href="css/identification.css">
   </head>
 
   <body>
 		<a href="index.php" ><img id="logo" src="img/Logo.png" alt="Logo de Plushop"></a>
-        <form   method='POST'  action='Creation.php'>
+        <form   method='POST'  action='creation.php'>
             <div id="Title">Création de compte</div>
             <label for="Pseudo">Pseudonyme</label>
             <input type="text" name="Pseudo" id="Pseudo" class="textbar">
