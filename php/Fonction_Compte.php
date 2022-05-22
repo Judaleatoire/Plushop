@@ -11,6 +11,16 @@
         return(-1);
     }
 
+    function write_new_user($user){//ecrit les données d'un nouvel utilisateur
+        $js = file_get_contents('data/compte.json');
+
+        $js = json_decode($js, true);
+        $js[] = $user;
+        $js = json_encode($js);
+
+        file_put_contents('data/compte.json',$js);
+
+    }
     
 
 ?>
