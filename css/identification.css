@@ -1,0 +1,136 @@
+body{
+    margin: 0;
+    background-color: white;
+    cursor: default;
+}
+
+a:link{
+    color: orange;
+    text-decoration: none;
+}
+
+a:visited{
+    color: orange;
+    text-decoration: none;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+
+
+#logo{
+    width: 100px;
+	margin-left: 50%;
+	margin-top: 2%;
+    transform: translate(-50%);
+}
+
+form{
+    width: 500px;
+	margin-left: 50%;
+	margin-top: 2%;
+    transform: translate(-50%);
+    border: black solid 1px;
+    border-radius: 7px;
+}
+form > *{
+    
+    margin: 10px 25px 10px 25px;
+    display: inline-block;
+}
+
+#Title{
+    width: calc(100% - 50px);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 48px;
+}
+
+#remember{
+    margin-right: 10px;
+    height: 20px;
+    padding: 0;
+    vertical-align: middle;
+    position: relative;
+    bottom: 3px;
+}
+
+#remember:hover{
+    cursor: pointer;
+}
+
+#text_remember{
+    margin-left: 0;
+    font-size: 20px;
+}
+
+#text_remember:hover{
+    cursor: pointer;
+}
+
+#New_account{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.textbar{
+    width: calc(100% - 50px);
+    padding: 0;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    text-indent: 10px;
+    vertical-align: middle;
+}
+
+.textbar:focus{
+    
+    outline: none !important;
+    border: rgb(250, 167, 13) 2px solid;
+    box-shadow: 0 0 10px rgb(250, 167, 13);
+}
+
+
+
+#submit{
+    text-align: center;
+    width: calc(100% - 50px);
+    padding: 0;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: rgb(230, 149, 0) 2px solid;
+    background: linear-gradient(rgb(255, 201, 100),rgb(255, 188, 62));
+}
+
+#submit:hover{
+    background: linear-gradient(rgb(255, 201, 100),orange);
+    cursor: pointer;
+}
+
+#New_account{
+    width: calc(100% - 50px);
+    padding: 0;
+    height: 40px;
+    border-radius: 5px;
+    border: rgb(230, 149, 0) 2px transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 136, 0);
+    font-size: 20px;
+}
+
+#New_account:hover{
+    background:rgb(255, 166, 0,0.5);
+    text-decoration: none;
+}
+
+#Forget_Password{
+    float: right;
+}
+
+label{
+    margin-bottom: 0;
+    font-size: 20px;
+}

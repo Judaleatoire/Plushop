@@ -4,6 +4,8 @@
 
   if(isset($_POST['submit'])){
 
+    var_dump($_POST);//test
+
     $user = array();//prend les donnees envoyé par l'utilisateur
     $user['login'] = $_POST['Login'];
     $user['password'] = $_POST['Password'];
@@ -19,7 +21,6 @@
       $_SESSION['login'] = $js[$i]['login'];
       $_SESSION['pseudo'] = $js[$i]['pseudo'];
       $_SESSION['emplacemnt'] = $i;
-      header("Location: index.php");
     }   
 }
 

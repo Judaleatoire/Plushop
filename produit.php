@@ -12,6 +12,7 @@
 <body>
 
     <?php
+        session_start();
         include "./php/chercher_produit.php";
         include "./php/test_page.php";
 
@@ -64,6 +65,7 @@
         <div id="produit">
             <section id="main">
 
+                <!-- VERIFIER QUE LES IMAGES EXISTENT BIEN  -->
                 <div id="choix">
                     <?php
                         $i = 1;
@@ -83,11 +85,12 @@
                     <div id="nom-produit"><?php echo($produit['nom']); ?></div>
                     <div id="prix"><?php echo($produit["prix"]); ?>€</div>
                     <div id="zone-ajout-panier">
-                        <button id="modif-ajout">-</button>
-                        <input type="text" name="quantite" id="quantite" value="1" readonly>
-                        <button id="modif-ajout">+</button>
-                        <br><br>
-                        <button id="ajout-panier">Ajouter au panier</button>
+                            <button id="modif-ajout">-</button>
+                            <input type="text" name="quantite" id="quantite" value="1" readonly>
+                            <button id="modif-ajout">+</button>
+                            <br><br>
+                            <?php echo ("<a href='panier.php?action=ajout&amp;l=" .$produit['nom']. "&amp;q=QUANTITEPRODUIT&amp;p=".$produit['prix']." onclick=\"window.open(this.href, '', 
+'toolbar=no, location=no, directories=no, status=yes, scrollbars=yes, resizable=yes, copyhistory=no, width=600, height=350'); return false;\">Ajouter au panier</a>"); ?>
                     </div>
                     <div id="description"><?php echo($produit['desc']); ?></div>
                 </div>
