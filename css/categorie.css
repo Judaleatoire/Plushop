@@ -17,3 +17,8 @@ img {
     height: 400px;
     margin: 30px;
 }
+
+.lien-produit {
+    border: solid 3px red;
+    margin: 10px;
+}

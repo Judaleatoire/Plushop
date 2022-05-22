@@ -11,6 +11,7 @@
 
     <?php
         include "./php/recherche_cat_xml.php";
+        include "./php/tabToKey.php";
     ?>
 
     <?php include "header.php"; ?>
@@ -52,28 +53,37 @@
                 $produits = array();
                 $i = 0;
 
-                foreach($csv as $ligne) {
-                    $temp = explode(",", $ligne);
-                    $temp2 = explode('-', $temp[0]);
-                    $temp2 = $temp2[0] . '-' . $temp2[1];
-                    
-                    if($cat == $temp2 || $cat == explode('-', $temp2)[0]) {
-                        $temp2 = array(
-                            "ref" => $temp[0],
-                            "nom" => $temp[1],
-                            "desc" => $temp[2],
-                            "prix" => $temp[3],
-                            "nouv" => $temp[4],
-                            "solde" => $temp[5],
-                            "stock" => $temp[6],
-                            "age" => $temp[7],
-                            "taille" => $temp[8],
-                            "marque" => $temp[9],
-                            "pos" => $i
-                        );
-                        array_push($produits, $temp2);
+                if($cat == "nou") {
+                    foreach($csv as $ligne) {
+                        $temp = explode(",", $ligne);
+                        if($temp[4] == 1) {
+                            $temp2 = tabToKey($temp);
+                            $temp2["pos"] = $i;
+                            array_push($produits, $temp2);
+                        }
                     }
-                    $i++;
+                } else if($cat == "sol") {
+                    foreach($csv as $ligne) {
+                        $temp = explode(",", $ligne);
+                        if($temp[5] != 0) {
+                            $temp2 = tabToKey($temp);
+                            $temp2["pos"] = $i;
+                            array_push($produits, $temp2);
+                        }
+                    }
+                } else {
+                    foreach($csv as $ligne) {
+                        $temp = explode(",", $ligne);
+                        $temp2 = explode('-', $temp[0]);
+                        $temp2 = $temp2[0] . '-' . $temp2[1];
+                        
+                        if($cat == $temp2 || $cat == explode('-', $temp2)[0]) {
+                            $temp2 = tabToKey($temp);
+                            $temp2["pos"] = $i;
+                            array_push($produits, $temp2);
+                        }
+                        $i++;
+                    }
                 }
 
                 // foreach($produits as $produit) {
@@ -93,16 +103,18 @@
 
                 foreach($produits as $produit) {
                     $temp = explode('-', $produit["ref"]);
-                    echo("<div border='solid 3px black'>");
+                    echo("<a href='produit.php?pdt=" . $produit["ref"] . "' class='lien-produit'>");
                     echo("<img src='./img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1.png' alt='./img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1'>");
                     echo("<br><br>");
                     echo($produit["nom"]);
-                    echo("</div>");
+                    echo("</a>");
                 }
 
             ?>
         </div>
     </div>
+
+    <a href=""></a>
     
     <?php include "footer.php"; ?>
 </body>
