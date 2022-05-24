@@ -4,7 +4,6 @@
 
   if(isset($_POST['submit'])){
 
-    var_dump($_POST);//test
 
     $user = array();//prend les donnees envoyé par l'utilisateur
     $user['login'] = $_POST['Login'];
