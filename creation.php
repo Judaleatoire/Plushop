@@ -4,12 +4,10 @@
         
         $user = array();//creer les donnees sur le nouvel utilisateur
         $user['login'] = $_POST['Login'];
-        $user['conf_login'] = $_POST['Conf_Login'];
         $user['password'] = $_POST['Password'];
-        $user['conf_password'] = $_POST['Conf_Password'];
         $user['pseudo'] = $_POST['Pseudo'];
 
-        if(($user['login'] == $user['conf_login'])&&($user['password'] == $user['conf_password'])){//verifie que les email et les mdp sont les meme, rajouté fonction de verif
+        if(($user['login'] == $_POST['Conf_Login'])&&($user['password'] == $_POST['Conf_Password'])){//verifie que les email et les mdp sont les meme, rajouté fonction de verif
         write_new_user($user);
         header("Location: index.php");
         }
