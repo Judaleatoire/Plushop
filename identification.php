@@ -21,6 +21,7 @@
       $_SESSION['login'] = $js[$i]['login'];
       $_SESSION['pseudo'] = $js[$i]['pseudo'];
       $_SESSION['emplacemnt'] = $i;
+	header("Location: index.php");
     }   
 }
 
