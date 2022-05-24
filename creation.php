@@ -7,7 +7,39 @@
         $user['password'] = $_POST['Password'];
         $user['pseudo'] = $_POST['Pseudo'];
 
-        if(($user['login'] == $_POST['Conf_Login'])&&($user['password'] == $_POST['Conf_Password'])){//verifie que les email et les mdp sont les meme, rajouté fonction de verif
+        $error = 0;
+        $conflogin =0;
+        $confmdp = 0;
+        $email = 0;
+        $pseudo = 0;
+
+        if(!($user['login'] == $_POST['Conf_Login'])){//confirmer que la confirmation d'email est la même
+            $error++;
+            $conflogin = 1;
+        }
+
+        if(!($user['password'] == $_POST['Conf_Password'])){//confirmer que la confirmation de mot de passe est la même
+            $error++;
+            $confmdp = 1;
+        }
+
+        if(!(filter_var($user['login'], FILTER_VALIDATE_EMAIL))){//confirmer que la confirmation de mot de passe est la même
+            $error++;
+            $email = 1;
+        }
+        
+        if(!(filter_var($user['pseudo'],FILTER_DEFAULT))){//confirmer que le pseudo soit correct
+            $error++;
+            $pseudo = 1;
+        }
+
+        if(!(filter_var($user['password'],FILTER_DEFAULT))){//confimer que le mot de passe soit correct
+            $error++;
+            $pseudo = 1;
+        }
+
+
+        if($error == 0){//verifie que ya pas d'erreur
         write_new_user($user);
         header("Location: index.php");
         }
@@ -26,7 +58,7 @@
 
   <body>
 		<a href="index.php" ><img id="logo" src="img/Logo.png" alt="Logo de Plushop"></a>
-        <form   method='POST'  action='creation.php'>
+        <form   method='POST'  action='creation.php' novalidate>
             <div id="Title">Création de compte</div>
             <label for="Pseudo">Pseudonyme</label>
             <input type="text" name="Pseudo" id="Pseudo" class="textbar">
