@@ -1,57 +1,47 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head lang="fr">
     <title>Plushop|Magasin spécialisé dans la vente de peluche</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/categorie.css?v=2">
+    <link rel="stylesheet" href="css/categorie.css?v=2">
 </head>
 
 <body>
 
     <?php
-        include "./php/recherche_cat_xml.php";
-        include "./php/tabToKey.php";
+        include_once "php/recherche_cat_xml.php";
+        include_once "php/tabToKey.php";
+        include_once "php/verif_isset_empty.php";
+        include_once "php/open_file.php";
     ?>
 
     <?php include "header.php"; ?>
+    <?php include "menu_cote.php"; ?>
 
-    <div class="flexbox-contenu">
-
-        <?php include "menu_cote.php"; ?>
+    <div class="container">
 
         <?php
-            $cat = explode('=', $_SERVER['QUERY_STRING'])[1];
-            if(!isset($cat[1]) || empty($cat[1])) {
-                header("location: index.php");
-            }
 
-            if(file_exists("./data/categories.xml")) {
-                $xml = simplexml_load_file("./data/categories.xml");
-            } else {
-                exit("Le fichier n'a pas pu être ouvert...");
-            }
-            
-            if(file_exists("./data/produits.csv")) {
-                $csv = file("./data/produits.csv");
-            } else {
-                exit("Le fichier n'a pas pu être ouvert...");
-            }
+            $cat = $_GET['cat'];
+            verif_isset_empty($cat, "page_erreur.php");
+
+            $xml = open_file("data/categories.xml", "xml", "page_erreur.php");
+            $csv = open_file("data/produits.csv", "csv", "page_erreur.php");
 
             $categorie = recherche_cat_xml($xml, $cat);
             if($categorie == -1) {
-                header("location: index.php");
+                header("location: page_erreur.php");
             }
                      
         ?>
 
         <div id='contenu'>
             <div id='filtres'>
-                <button onclick='tri()'>TEST</button>
+                <button onclick='filtre()'>Ordre alphabétique</button>
+                <button onclick='filtre()'>Ordre alphabétique inverse</button>
+                <button onclick='filtre()'>Ordre croissant de prix</button>
+                <button onclick='filtre()'>Ordre décroissant de prix</button>
             </div>
 
             <div class="produits">
@@ -115,7 +105,7 @@
                     foreach($produits as $produit) {
                         $temp = explode('-', $produit["ref"]);
                         echo("<a href='produit.php?pdt=" . $produit["ref"] . "' class='lien-produit' order='$i'>");
-                        echo("<img src='./img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1.png' alt='./img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1'>");
+                        echo("<img src='img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1.jpg' alt='img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1'>");
                         echo("<br><br>");
                         echo($produit["nom"]);
                         echo("</a>");
@@ -131,7 +121,7 @@
     
     <?php include "footer.php"; ?>
 
-    <script src="./js/tri.js?v=2"></script>
+    <script src="js/filtre.js?v=2"></script>
 
 </body>
 
