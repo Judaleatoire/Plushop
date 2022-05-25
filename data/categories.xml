@@ -9,19 +9,19 @@
         <id>ani</id>
         <description>Peluches d'animaux de tout genres !</description>
         <sous_categorie>
-            <nom>Savane</nom>
-            <id>sav</id>
-            <description>Animaux de la savane</description>
-        </sous_categorie>
-        <sous_categorie>
-            <nom>Jungle</nom>
-            <id>jun</id>
-            <description>Animaux de la jungle</description>
+            <nom>Forêt</nom>
+            <id>for</id>
+            <description>Animaux de la forêt</description>
         </sous_categorie>
         <sous_categorie>
             <nom>Mer</nom>
             <id>mer</id>
             <description>Animaux marins</description>
+        </sous_categorie>
+        <sous_categorie>
+            <nom>Dinosaure</nom>
+            <id>din</id>
+            <description>Dinosaures</description>
         </sous_categorie>
         <sous_categorie>
             <nom>Fantastique</nom>
