@@ -2,9 +2,11 @@ body{
     margin: 0;
 }
 
-.flexbox-contenu {
-    display: flex;
-    flex-direction: row;
+.container {
+    position: relative;
+    top: calc(0vh + 150px);
+    z-index: 0;
+    margin-left:14%;
 }
 
 #filtres {
