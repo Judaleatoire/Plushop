@@ -3,6 +3,16 @@
         $js = file_get_contents('data/compte.json');
         $js = json_decode($js, true);
 
+        // https://www.php.net/manual/fr/function.array-filter
+
+        // $user = array_filter($js, function($data) {
+        //     if($data['login'] === $email){
+        //         return $data;
+        //     }
+        // });
+
+        // return empty($user) ? null : $user[0];
+
         for($i=0;$i<count($js);$i++){
             if($js[$i]['login'] == $email){
                 return($i);

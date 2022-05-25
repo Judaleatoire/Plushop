@@ -1,10 +1,12 @@
 <?php 
-    function creerPanier (){
+    function creerPanier (){ 
+        // c'est plus simple de faire en sorte [["nom" => "Enta", "prix" => 40000000000000000000000000000, ...]]
+
         if (!isset ($_SESSION['panier'])){
             $_SESSION['panier'] = array();
-            $_SESSION['panier']['nom'] = array();
+            $_SESSION['panier']['nom'] = array(); // Enta, Saucisse 
             $_SESSION['panier']['quantite'] = array();
-            $_SESSION['panier']['prix'] = array();
+            $_SESSION['panier']['prix'] = array(); // panier->index-> prix
             $_SESSION['panier']['verrou'] = false; //permet de vérouiller le panier
         }
         return true;
