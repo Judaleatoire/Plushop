@@ -33,58 +33,87 @@
             if($categorie == -1) {
                 header("location: page_erreur.php");
             }
+
+            $temp = array();
+            $temp2 = array();
+            $produits = array();
+            $i = 0;
+
+            //VERIFIER SI LE PRODUIT A DU STOCK
+            if($cat == "nou") {
+                foreach($csv as $ligne) {
+                    $temp = explode(",", $ligne);
+                    if($temp[4] == 1) {
+                        $temp2 = tabToKey($temp);
+                        $temp2["pos"] = $i;
+                        array_push($produits, $temp2);
+                    }
+                }
+            } else if($cat == "sol") {
+                foreach($csv as $ligne) {
+                    $temp = explode(",", $ligne);
+                    if($temp[5] != 0) {
+                        $temp2 = tabToKey($temp);
+                        $temp2["pos"] = $i;
+                        array_push($produits, $temp2);
+                    }
+                }
+            } else {
+                foreach($csv as $ligne) {
+                    $temp = explode(",", $ligne);
+                    $temp2 = explode('-', $temp[0]);
+                    $temp2 = $temp2[0] . '-' . $temp2[1];
+                    
+                    if($cat == $temp2 || $cat == explode('-', $temp2)[0]) {
+                        $temp2 = tabToKey($temp);
+                        $temp2["pos"] = $i;
+                        array_push($produits, $temp2);
+                    }
+                    $i++;
+                }
+            }
+
+            $filtres = [
+                "taille" => [],
+                "couleur" => [],
+                "marque" => []
+            ];
+
+            $filtres_keys = array_keys($filtres);
+
+            foreach($produits as $produit) {
+                if(!in_array($produit["taille"], $filtres["taille"])) $filtres["taille"][] = $produit["taille"];
+                if(!in_array($produit["couleur"], $filtres["couleur"])) $filtres["couleur"][] = $produit["couleur"];
+                if(!in_array($produit["marque"], $filtres["marque"])) $filtres["marque"][] = $produit["marque"];
+            }
+
+            print_r($filtres);
+            print_r($filtres_keys);
                      
         ?>
 
         <div id='contenu'>
             <div id='filtres'>
-                <button onclick='filtre()'>Ordre alphabétique</button>
-                <button onclick='filtre()'>Ordre alphabétique inverse</button>
-                <button onclick='filtre()'>Ordre croissant de prix</button>
-                <button onclick='filtre()'>Ordre décroissant de prix</button>
+                <button onclick='filtre("TAC")'>Ordre alphabétique</button><br>
+                <button onclick='filtre("TAD")'>Ordre alphabétique inverse</button><br>
+                <button onclick='filtre("TPC")'>Ordre croissant de prix</button><br>
+                <button onclick='filtre("TPD")'>Ordre décroissant de prix</button><br><br>
+
+                <?php
+                    $i = 0;
+                    foreach($filtres as $filtre) {
+                        foreach($filtre as $element) {
+                            echo("<input type='checkbox' name='" . $filtres_keys[$i] . "' id='" . $filtres_keys[$i] . "' value='" . $element . "'>");
+                            echo($element . "<br>");
+                        }
+                        $i++;
+                        echo("<br>");
+                    }
+                ?>
             </div>
 
             <div class="produits">
                 <?php
-
-                    $temp = array();
-                    $temp2 = array();
-                    $produits = array();
-                    $i = 0;
-
-                    //VERIFIER SI LE PRODUIT A DU STOCK
-                    if($cat == "nou") {
-                        foreach($csv as $ligne) {
-                            $temp = explode(",", $ligne);
-                            if($temp[4] == 1) {
-                                $temp2 = tabToKey($temp);
-                                $temp2["pos"] = $i;
-                                array_push($produits, $temp2);
-                            }
-                        }
-                    } else if($cat == "sol") {
-                        foreach($csv as $ligne) {
-                            $temp = explode(",", $ligne);
-                            if($temp[5] != 0) {
-                                $temp2 = tabToKey($temp);
-                                $temp2["pos"] = $i;
-                                array_push($produits, $temp2);
-                            }
-                        }
-                    } else {
-                        foreach($csv as $ligne) {
-                            $temp = explode(",", $ligne);
-                            $temp2 = explode('-', $temp[0]);
-                            $temp2 = $temp2[0] . '-' . $temp2[1];
-                            
-                            if($cat == $temp2 || $cat == explode('-', $temp2)[0]) {
-                                $temp2 = tabToKey($temp);
-                                $temp2["pos"] = $i;
-                                array_push($produits, $temp2);
-                            }
-                            $i++;
-                        }
-                    }
 
                     // foreach($produits as $produit) {
                     //     foreach($produit as $clé => $valeur) {
@@ -104,7 +133,7 @@
                     $i = 0;
                     foreach($produits as $produit) {
                         $temp = explode('-', $produit["ref"]);
-                        echo("<a href='produit.php?pdt=" . $produit["ref"] . "' class='lien-produit' order='$i'>");
+                        echo("<a href='produit.php?pdt=" . $produit["ref"] . "' class='lien-produit' order='$i' data-ref='" . $produit["ref"] . "'>");
                         echo("<img src='img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1.jpg' alt='img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1'>");
                         echo("<br><br>");
                         echo($produit["nom"]);

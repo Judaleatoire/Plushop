@@ -1,69 +1,29 @@
-// https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch
-// function tri() {
-    // $produits.forEach(element => {
-    //     element.style.border = "solid 3px green";
-    // });
-
-    //TESTER SI CA FONCTIONNE SUR TOUS LES NAVIGUATEURS/OS
-    // if(window.XMLHttpRequest) xhr_objet = new XMLHttpRequest();
-    // else if(window.ActiveXObject) xhr_objet = new ActiveXObject("Microsoft.XMLHTTP");
-    // else {
-    //     alert("Votre naviguateur ne supporte pas les objets XMLHTTPRequest");
-    //     return;
-    // }
-    // // localhost/monprojet/monprojet<- ./
-    // //  
-    // xhr_objet.open("GET", "data/produits.csv", true);
-    // xhr_objet.send(null);
-
-    // xhr_objet.onreadystatechange = function() {
-    //     if(this.readyState == 4) alert(this.responseText);
-    // }
-
-    // Asynchrone
-    // let data = fetch("data/produits.csv", {
-    //     headers: {
-    //         'Content-Type': "text/csv;charset=UTF-8"
-    //     }
-    // }).then(request => {
-    //     if(request.ok){
-    //         return request.text();
-    //     }
-    // }).then(data => {
-    //     console.log(data);
-    //     // execute ton code tri ici 
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // })
-    // console.log(data);
-// }
-
-// async function getData(){
-//     let data = await fetch("data/produits.csv", {
-//         headers: {
-//             'Content-Type': "text/csv;charset=UTF-8"
-//         }
-//     }).then(request => {
-//         if(request.ok){
-//             return request.text();
-//         }
-//     }).then(data => {
-//         console.log(data);
-//         // execute ton code tri ici 
-//     }).catch(error => {
-//         console.error(error);
-//     })
-//     console.log(data);
-// }
-
 var produits = document.querySelectorAll(".lien-produit");
 
-function compare_string(a, b) {
+//peut etre faire une fonction qui peut tout gérer d'un coup
+function compare_string_croiss(a, b) {
     if(a.nom < b.nom) return -1;
     if(a.nom > b.nom) return 1;
     return 0;
 }
+
+function compare_string_decroiss(a, b) {
+    if(a.nom < b.nom) return 1;
+    if(a.nom > b.nom) return -1;
+    return 0;
+}
+
+function compare_price_croiss(a, b) {
+    if(parseFloat(a.prix) < parseFloat(b.prix)) return -1;
+    if(parseFloat(a.prix) > parseFloat(b.prix)) return 1;
+    return 0;
+}
+
+function compare_price_decroiss(a, b) {
+    if(parseFloat(a.prix) < parseFloat(b.prix)) return 1;
+    if(parseFloat(a.prix) > parseFloat(b.prix)) return -1;
+    return 0;
+} 
 
 function tabToKey(tab) {
     let tabKey = {
@@ -92,8 +52,30 @@ function parseCSV(data) {
     return tab;
 }
 
+//faire des tests
+function reset_order() {
+    for(let i=0; i<produits.length; i++) {
+        produits[i].style.order = i;
+    }
+}
+
+//faire des tests
+function reset_hidden() {
+    for(let i=0; i<produits.length; i++) {
+        produits[i].style.display = "block";
+    }
+}
+
+function tri(sort_data) {
+    for(let i=0; i<produits.length; i++) {
+        let ref = produits[i].dataset.ref;
+        let indice = sort_data.findIndex(produit => produit.ref == ref);
+        produits[i].style.order = indice;
+    }
+}
+
 //gerer les erreurs
-async function filtre() {
+async function filtre(type) {
     
     await fetch("data/produits.csv", {
         headers: {
@@ -106,16 +88,36 @@ async function filtre() {
     }).then(text => {
         return parseCSV(text);
     }).then(data => {
-        let sort_data = data;
-        sort_data.sort(compare_string);
+        let sort_data = [...data];
 
-        console.log(sort_data);
+        console.log(data);
 
-        for(let i=0; i<produits.length; i++) {
-            let ref = produits[i].href.split('=')[1];
-            let indice = sort_data.findIndex(produit => produit.ref == ref);
-            produits[i].style.order = indice;
+        switch(type) {
+            case "TAC":
+                sort_data.sort(compare_string_croiss);
+                console.log(sort_data);
+                break;
+            case "TAD":
+                sort_data.sort(compare_string_decroiss);
+                console.log(sort_data);
+                break;
+            case "TPC":
+                sort_data.sort(compare_price_croiss);
+                console.log(sort_data);
+                break;
+            case "TPD":
+                sort_data.sort(compare_price_decroiss);
+                console.log(sort_data);
+                break;
+            default:
+                window.location.href = "page_erreur.php";
         }
+
+        tri(sort_data);
+
+        // console.log(sort_data);
+
+        
     })
 
 }
