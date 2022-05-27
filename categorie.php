@@ -4,6 +4,7 @@
 <head lang="fr">
     <title>Plushop|Magasin spécialisé dans la vente de peluche</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css?v=2">
     <link rel="stylesheet" href="css/categorie.css?v=2">
 </head>
 
@@ -17,7 +18,6 @@
     ?>
 
     <?php include "header.php"; ?>
-    <?php include "menu_cote.php"; ?>
 
     <div class="container">
 
@@ -85,19 +85,22 @@
                 if(!in_array($produit["taille"], $filtres["taille"])) $filtres["taille"][] = $produit["taille"];
                 if(!in_array($produit["couleur"], $filtres["couleur"])) $filtres["couleur"][] = $produit["couleur"];
                 if(!in_array($produit["marque"], $filtres["marque"])) $filtres["marque"][] = $produit["marque"];
+                print_r($filtres["marque"]);
+                echo($produit["marque"] . "<br>");
             }
 
             print_r($filtres);
+            echo("<br><br>");
             print_r($filtres_keys);
                      
         ?>
 
         <div id='contenu'>
             <div id='filtres'>
-                <button onclick='filtre("TAC")'>Ordre alphabétique</button><br>
-                <button onclick='filtre("TAD")'>Ordre alphabétique inverse</button><br>
-                <button onclick='filtre("TPC")'>Ordre croissant de prix</button><br>
-                <button onclick='filtre("TPD")'>Ordre décroissant de prix</button><br><br>
+                <button onclick='filtre("TAC")'>Ordre alphabétique</button>
+                <button onclick='filtre("TAD")'>Ordre alphabétique inverse</button>
+                <button onclick='filtre("TPC")'>Ordre croissant de prix</button>
+                <button onclick='filtre("TPD")'>Ordre décroissant de prix</button>
 
                 <?php
                     $i = 0;
@@ -135,7 +138,7 @@
                         $temp = explode('-', $produit["ref"]);
                         echo("<a href='produit.php?pdt=" . $produit["ref"] . "' class='lien-produit' order='$i' data-ref='" . $produit["ref"] . "'>");
                         echo("<img src='img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1.jpg' alt='img/$temp[0]/$temp[1]/$temp[2]/" . $produit["ref"] . "-1'>");
-                        echo("<br><br>");
+                        // echo("<br><br>");
                         echo($produit["nom"]);
                         echo("</a>");
                         $i++;

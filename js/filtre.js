@@ -1,4 +1,6 @@
 var produits = document.querySelectorAll(".lien-produit");
+// var tailles = document.querySelectorAll("input[name='taille']:checked");
+// console.log(tailles);
 
 //peut etre faire une fonction qui peut tout gérer d'un coup
 function compare_string_croiss(a, b) {
@@ -91,6 +93,7 @@ async function filtre(type) {
         let sort_data = [...data];
 
         console.log(data);
+        // console.log(tailles);
 
         switch(type) {
             case "TAC":
@@ -99,15 +102,15 @@ async function filtre(type) {
                 break;
             case "TAD":
                 sort_data.sort(compare_string_decroiss);
-                console.log(sort_data);
+                // console.log(sort_data);
                 break;
             case "TPC":
                 sort_data.sort(compare_price_croiss);
-                console.log(sort_data);
+                // console.log(sort_data);
                 break;
             case "TPD":
                 sort_data.sort(compare_price_decroiss);
-                console.log(sort_data);
+                // console.log(sort_data);
                 break;
             default:
                 window.location.href = "page_erreur.php";

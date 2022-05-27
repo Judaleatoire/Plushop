@@ -1,12 +1,73 @@
-aside{
-    min-height: 100%;
-    width: 10em;
-    min-width: 160px;
-    margin: 0;
-    background-color: pink;
-    position: sticky; 
+.piou {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: calc(0vh + 150px);
+  left: 0;
+  background-color: var(--menu-color);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  max-width: 200px;
+  text-align: left;
 }
 
-#menu-cote {
-    position: fixed;
+#menu_open {
+  font-size: 25px;
+  cursor: pointer;
+  user-select: none;
+
+}
+
+.piou a {
+  padding: 8px 8px 8px 0px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #b3afa3;
+  display: block;
+  transition: 0.3s;
+}
+
+.piou a:hover {
+  color: #c6e0dc;
+}
+
+.piou a:target {
+  border-bottom: 2px solid var(--accent);
+  width: 80%;
+}
+
+.piou>ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.piou li {
+  padding: 0;
+  margin-left: 10%;
+}
+
+.piou .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 20px;
+  /* margin-left: 5px; */
+}
+
+
+/*  sous categ */
+
+.piou-sous {
+  list-style-type: none;
+  margin-block-start: 5px;
+  margin-block-end: 0;
+  padding-inline-start: 25px;
+}
+
+.piou-sous a {
+  color: var(--accent);
 }

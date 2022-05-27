@@ -1,7 +1,5 @@
-<head lang="fr">
-    <link rel="stylesheet" href="./css/footer.css?v=2">
-</head>
 
+<script src="js/menu.js"></script>
 <footer>
         <a href="index.php">Infos & Contacts</a>
         <a href="index.php">Confidentialité</a>

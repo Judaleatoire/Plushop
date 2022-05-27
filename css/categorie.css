@@ -1,31 +1,42 @@
-body{
+body {
     margin: 0;
 }
 
-.container {
-    position: relative;
-    top: calc(0vh + 150px);
-    z-index: 0;
-    margin-left:14%;
-}
-
 #filtres {
-    /* height: 100px; */
-    background-color: lightblue;
+    height: 100px;
 }
 
 .produits {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
+    flex-direction: row;
+    margin-bottom: 200px;
 }
 
-img {
-    width: 400px;
-    height: 400px;
-    margin: 30px;
-}
-
-.lien-produit {
-    border: solid 3px red;
+.produits>a {
+    width: 300px;
+    background-color: var(--head-color);
+    border-radius: 7px;
     margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text-main-color);
 }
+
+.produits>a>img {
+    display: block;
+    width: 250px;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 7px;
+    /* https://shadows.brumm.af/ */
+    box-shadow:
+        1.2px 1.2px 3.6px rgba(0, 0, 0, 0.024),
+        3.4px 3.3px 10px rgba(0, 0, 0, 0.035),
+        8.1px 7.8px 24.1px rgba(0, 0, 0, 0.046),
+        27px 26px 80px rgba(0, 0, 0, 0.07);
+    /* margin: 30px; */
+}
+

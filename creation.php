@@ -48,28 +48,26 @@
 
 ?>
 
-
-
 <head>
     <title>Création de compte Plushop</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/identification.css">
-  </head>
+</head>
 
-  <body>
-		<a href="index.php" ><img id="logo" src="img/Logo.png" alt="Logo de Plushop"></a>
-        <form   method='POST'  action='creation.php' novalidate>
-            <div id="Title">Création de compte</div>
-            <label for="Pseudo">Pseudonyme</label>
-            <input type="text" name="Pseudo" id="Pseudo" class="textbar">
-            <label for="Login">Email</label>
-            <input type="email" name="Login" id="Login" class="textbar">
-            <label for="Conf_Login">Confirmer email</label>
-            <input type="email" name="Conf_Login" id="Conf_Login" class="textbar">
-            <label for="Password">Mot de passe</label>
-            <input type="password" name="Password" id="Password" class="textbar">
-            <label for="Conf_Password">Confirmer mot de passe</label>
-            <input type="password" name="Conf_Password" id="ConfPassword" class="textbar">
-            <input type="submit" id="submit" name="submit" value="Creer compte">
-        </form>
+<body>
+    <a href="index.php" ><img id="logo" src="img/Logo.png" alt="Logo de Plushop"></a>
+    <form   method='POST'  action='creation.php' novalidate>
+        <div id="Title">Création de compte</div>
+        <label for="Pseudo">Pseudonyme</label>
+        <input type="text" name="Pseudo" id="Pseudo" class="textbar">
+        <label for="Login">Email</label>
+        <input type="email" name="Login" id="Login" class="textbar">
+        <label for="Conf_Login">Confirmer email</label>
+        <input type="email" name="Conf_Login" id="Conf_Login" class="textbar">
+        <label for="Password">Mot de passe</label>
+        <input type="password" name="Password" id="Password" class="textbar">
+        <label for="Conf_Password">Confirmer mot de passe</label>
+        <input type="password" name="Conf_Password" id="ConfPassword" class="textbar">
+        <input type="submit" id="submit" name="submit" value="Creer compte">
+    </form>
 </body>
