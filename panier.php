@@ -9,9 +9,9 @@
 <body>
 
     <?php include "header.php"; ?>
-
+    <div class="container">
     <?php
-        require_once("php/fonction-panier.php");
+        require_once("php/fonction_panier.php");
 
         $erreur = false;
         $action = (isset($_POST['action'])? $_POST['action']:  (isset($_GET['action'])? $_GET['action']:null )) ;
@@ -25,6 +25,7 @@
             $l = (isset($_POST['nom'])? $_POST['nom']:  (isset($_GET['nom'])? $_GET['nom']:null )) ;
             $p = (isset($_POST['prix'])? $_POST['prix']:  (isset($_GET['prix'])? $_GET['prix']:null )) ;
             $q = (isset($_POST['quantite'])? $_POST['quantite']:  (isset($_GET['quantite'])? $_GET['quantite']:null )) ;
+            unset($_POST);
 
         //Suppression des espaces verticaux (retour a la ligne)
         $l = preg_replace('#\v#', '',$l); // <- comprend pas ? go filter var string
@@ -45,10 +46,12 @@
             switch($action){
                 Case "ajout":
                     ajout($l,$q,$p);
+                    header("Location: panier.php");
                     break;
 
                 Case "suppression":
                     supp($l);
+                    header("Location: panier.php");
                     break;
 
                 Case "refresh" :
@@ -57,9 +60,7 @@
                         modifierQTeArticle($element['nom'], round($quantite[$i]));
                         $i++;
                     }
-                    // for ($i = 0 ; $i < count($QteArticle) ; $i++){
-                    //     modifierQTeArticle($_SESSION['panier'][$i]['nom'],round($QteArticle[$i]));
-                    // }
+                    header("Location: panier.php");
                     break;
 
                 Default:
@@ -67,8 +68,6 @@
             }
         }
     ?>
-
-    <div class="container">
         <form method="post" action="panier.php">
         <table style="width: 400px">
             <tr>

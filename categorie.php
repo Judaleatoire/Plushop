@@ -73,25 +73,25 @@
                 }
             }
 
-            $filtres = [
-                "taille" => [],
-                "couleur" => [],
-                "marque" => []
-            ];
+            // $filtres = [
+            //     "taille" => [],
+            //     "couleur" => [],
+            //     "marque" => []
+            // ];
 
-            $filtres_keys = array_keys($filtres);
+            // $filtres_keys = array_keys($filtres);
 
-            foreach($produits as $produit) {
-                if(!in_array($produit["taille"], $filtres["taille"])) $filtres["taille"][] = $produit["taille"];
-                if(!in_array($produit["couleur"], $filtres["couleur"])) $filtres["couleur"][] = $produit["couleur"];
-                if(!in_array($produit["marque"], $filtres["marque"])) $filtres["marque"][] = $produit["marque"];
-                print_r($filtres["marque"]);
-                echo($produit["marque"] . "<br>");
-            }
+            // foreach($produits as $produit) {
+            //     if(!in_array($produit["taille"], $filtres["taille"])) $filtres["taille"][] = $produit["taille"];
+            //     if(!in_array($produit["couleur"], $filtres["couleur"])) $filtres["couleur"][] = $produit["couleur"];
+            //     if(!in_array($produit["marque"], $filtres["marque"])) $filtres["marque"][] = $produit["marque"];
+            //     print_r($filtres["marque"]);
+            //     echo($produit["marque"] . "<br>");
+            // }
 
-            print_r($filtres);
-            echo("<br><br>");
-            print_r($filtres_keys);
+            // print_r($filtres);
+            // echo("<br><br>");
+            // print_r($filtres_keys);
                      
         ?>
 
@@ -103,15 +103,15 @@
                 <button onclick='filtre("TPD")'>Ordre décroissant de prix</button>
 
                 <?php
-                    $i = 0;
-                    foreach($filtres as $filtre) {
-                        foreach($filtre as $element) {
-                            echo("<input type='checkbox' name='" . $filtres_keys[$i] . "' id='" . $filtres_keys[$i] . "' value='" . $element . "'>");
-                            echo($element . "<br>");
-                        }
-                        $i++;
-                        echo("<br>");
-                    }
+                    // $i = 0;
+                    // foreach($filtres as $filtre) {
+                    //     foreach($filtre as $element) {
+                    //         echo("<input type='checkbox' name='" . $filtres_keys[$i] . "' id='" . $filtres_keys[$i] . "' value='" . $element . "'>");
+                    //         echo($element . "<br>");
+                    //     }
+                    //     $i++;
+                    //     echo("<br>");
+                    // }
                 ?>
             </div>
 

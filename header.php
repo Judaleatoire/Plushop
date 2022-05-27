@@ -5,7 +5,7 @@
 <header>
     <div id="gauche">
     <div id="logo">
-    <img src="img/plushop_logo_2.png" alt="logo" id="chat">
+    <a href="index.php"><img src="img/plushop_logo_2.png" alt="logo" id="chat"></a>
     </div>
         <span id="menu_open"><i class="las la-bars"></i></span>
     </div>

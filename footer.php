@@ -1,4 +1,3 @@
-
 <script src="js/menu.js"></script>
 <footer>
         <a href="index.php">Infos & Contacts</a>

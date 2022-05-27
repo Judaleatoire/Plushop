@@ -11,8 +11,8 @@
     <?php
         include "header.php";
 
-        include_once ("php/fonction-panier.php");
-        require_once ("php/fonction-stock.php");
+        include_once ("php/fonction_panier.php");
+        require_once ("php/fonction_stock.php");
         echo ("<br><br><br><br><br><br><br><br><br><br><br><br>");
         $host  = $_SERVER['HTTP_HOST'];
         $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

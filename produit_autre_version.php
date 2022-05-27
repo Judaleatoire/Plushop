@@ -74,9 +74,9 @@
     <div class="infos">
         Nom : <?php echo($produit['nom']); ?><br>
         Prix : <?php echo($produit['prix']); ?><br>
-        <form action="panier.php" method="post">
-            <input type="hidden" name="nom" value="<?php echo($produit['nom']); ?>" readonly>
-            <input type="hidden" name="prix" value="<?php echo($produit['prix']); ?> €" readonly>
+        <!-- <form action="panier.php" method="post">
+            <input type="hidden" name="nom" value="<?php //echo($produit['nom']); ?>" readonly>
+            <input type="hidden" name="prix" value="<?php //echo($produit['prix']); ?> €" readonly>
             <input type="hidden" name="action" value="ajout" readonly>
             <div id="zone-ajout-panier">
                     <button type="button" id="modif-ajout" readonly>-</button>
@@ -85,11 +85,38 @@
                     <br><br>
             </div>
             <input type="submit" class="button-48" role="button" value="Ajouter au panier">
-        </form>
+        </form> -->
+
+        <button type="button" id="modif-ajout" readonly>-</button>
+        <input type="text" name="quantite" id="quantite" value="1" readonly>
+        <button type="button" id="modif-ajout" readonly>+</button>
+
+        <button class="button-48" onclick="buy('<?= $produit['ref'] ?>', '<?= $produit['nom'] ?>', '<?= $produit['prix'] ?>', '<?= $produit['solde'] ?>')">Ajouter au panier</button>
 
         <div id="description"><?php echo($produit['desc']); ?></div>
     </div>
 </div>
+
+<script>
+    function buy(ref, nom, prix, solde){
+        let data=  new FormData();
+        data.set("ref", ref);
+        data.set("nom", nom);
+        data.set("prix", prix);
+        data.set("solde", solde);
+        data.set("qt", document.getElementById("quantite").value);
+        send(data);
+    }
+
+    function send(data){
+        return fetch("php/cart.php", {
+            method: 'POST',
+            body: data
+        }).then(x => {
+            window.location.replace("panier.php");
+        })
+    }
+</script>
 
 </section>
 
@@ -122,6 +149,8 @@
 
     <script src="./js/change_quantite.js?v=2"></script>
     <script src="./js/change_image_page_produit.js?v=2"></script>
+    <!-- <script src="./js/zoom.js?v=2"></script> -->
+    <script src="./js/cart.js?v=2"></script>
 
 </body>
 
