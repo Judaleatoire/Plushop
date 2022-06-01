@@ -1,3 +1,24 @@
+
+<?php/**
+     * Page de création de compte, recupère les informations utilisateur, les verifie en php 
+     * et s'il n'y a pas d'erreurs les enregistre dans le fichier json.
+     *  
+     * @author Loic Briant
+     * @author François Guillerm
+    */
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de compte Plushop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<?php include "header.php"?>
+   
 <?php 
     include 'php/fonction_Compte.php';
     if(isset($_POST['submit'])){
@@ -8,7 +29,7 @@
         $user['pseudo'] = $_POST['Pseudo'];
 
         $error = 0;
-        $conflogin =0;
+        $conflogin = 0;
         $confmdp = 0;
         $email = 0;
         $pseudo = 0;
@@ -22,8 +43,10 @@
             $error++;
             $confmdp = 1;
         }
-
-        if(!(filter_var($user['login'], FILTER_VALIDATE_EMAIL))){//confirmer que la confirmation de mot de passe est la même
+        if((recherche_email($user['login'])) != -1){ // verifie si l'utilisateur existe deja
+            $error++;
+        }
+        if(!(filter_var($user['login'], FILTER_VALIDATE_EMAIL))){//confirmer que l'email soit correct
             $error++;
             $email = 1;
         }
@@ -39,35 +62,33 @@
         }
 
 
-        if($error == 0){//verifie que ya pas d'erreur
-        write_new_user($user);
-        header("Location: index.php");
-        }
+        if($error == 0){//verifie qu'il n'y pas d'erreur et creer un nouveau compte dans le fichier json
+            $user['nom'] = "";
+            $user['prenom'] = "";
+            $user['genre'] = "";
+            $user['tel'] = "";
+            $user['date_naissance'] = "";
+            $user['adresse'] = "";
+            $user['metier'] = "";
+            write_new_user($user);
+            header("Location: index.php");
+        } else header("Location: creation.php");
     }
 
 
 ?>
-
-<head>
-    <title>Création de compte Plushop</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/identification.css">
-</head>
-
-<body>
-    <a href="index.php" ><img id="logo" src="img/Logo.png" alt="Logo de Plushop"></a>
-    <form   method='POST'  action='creation.php' novalidate>
-        <div id="Title">Création de compte</div>
-        <label for="Pseudo">Pseudonyme</label>
-        <input type="text" name="Pseudo" id="Pseudo" class="textbar">
-        <label for="Login">Email</label>
-        <input type="email" name="Login" id="Login" class="textbar">
-        <label for="Conf_Login">Confirmer email</label>
-        <input type="email" name="Conf_Login" id="Conf_Login" class="textbar">
-        <label for="Password">Mot de passe</label>
-        <input type="password" name="Password" id="Password" class="textbar">
-        <label for="Conf_Password">Confirmer mot de passe</label>
-        <input type="password" name="Conf_Password" id="ConfPassword" class="textbar">
+    <div class="containerLog">
+    <form  id="id" method='POST'  action='' novalidate>
+        <h2>Création de compte</h2><br>
+        <input type="text" name="Pseudo" id="Pseudo" class="textbar" placeholder="Pseudonyme">
+        <input type="email" name="Login" id="Login" class="textbar" placeholder="Email">
+        <input type="email" name="Conf_Login" id="Conf_Login" class="textbar" placeholder="Confirmation du mail">
+        <input type="password" name="Password" id="Password" class="textbar" placeholder="Mot de passe">
+        <input type="password" name="Conf_Password" id="ConfPassword" class="textbar" placeholder="Confirmation mot de passe">
         <input type="submit" id="submit" name="submit" value="Creer compte">
     </form>
+</div>
+
+    <?php include "footer.php"?>
 </body>
+</html>

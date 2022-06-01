@@ -2,8 +2,9 @@
 <html>
 
 <head lang="fr">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plushop|Magasin spécialisé dans la vente de peluche</title>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,7 +14,6 @@
 
     <?php
         include_once "php/chercher_produit.php";
-        include_once "php/test_page.php";
         include_once "php/verif_isset_empty.php";
         include_once "php/open_file.php";
 
@@ -37,18 +37,6 @@
     if($produit == -1) {
         header("location: page_erreur.php");
     }
-
-    // foreach($produit as $clé => $valeur) {
-    //     echo("$clé => ");
-    //     if(is_array($valeur)) {
-    //         foreach($valeur as $val) {
-    //             echo("$val ");
-    //         }
-    //     } else {
-    //         echo("$valeur");
-    //     }
-    //     echo("<br>");
-    // }
 ?>
 
 <div id="produit">
@@ -91,32 +79,11 @@
         <input type="text" name="quantite" id="quantite" value="1" readonly>
         <button type="button" id="modif-ajout" readonly>+</button>
 
-        <button class="button-48" onclick="buy('<?= $produit['ref'] ?>', '<?= $produit['nom'] ?>', '<?= $produit['prix'] ?>', '<?= $produit['solde'] ?>')">Ajouter au panier</button>
+        <button class="button-48" onclick="buy('<?= $produit['ref'] ?>')">Ajouter au panier</button>
 
         <div id="description"><?php echo($produit['desc']); ?></div>
     </div>
 </div>
-
-<script>
-    function buy(ref, nom, prix, solde){
-        let data=  new FormData();
-        data.set("ref", ref);
-        data.set("nom", nom);
-        data.set("prix", prix);
-        data.set("solde", solde);
-        data.set("qt", document.getElementById("quantite").value);
-        send(data);
-    }
-
-    function send(data){
-        return fetch("php/cart.php", {
-            method: 'POST',
-            body: data
-        }).then(x => {
-            window.location.replace("panier.php");
-        })
-    }
-</script>
 
 </section>
 
@@ -130,7 +97,7 @@
         </div>
     </section>
 
-    <section id="sugg">
+    <!-- <section id="sugg">
         <h2>Suggestions</h2>
         <div id="sugg-produits">
             <img src="./img/monkey.jpg" alt="monkey">
@@ -140,7 +107,7 @@
             <img src="./img/monkey.jpg" alt="monkey">
             <img src="./img/monkey.jpg" alt="monkey">
         </div>
-    </section>
+    </section> -->
 </div>
 </div>
 
@@ -150,7 +117,7 @@
     <script src="./js/change_quantite.js?v=2"></script>
     <script src="./js/change_image_page_produit.js?v=2"></script>
     <!-- <script src="./js/zoom.js?v=2"></script> -->
-    <script src="./js/cart.js?v=2"></script>
+    <script src="./js/gestion_panier.js?v=2"></script>
 
 </body>
 
