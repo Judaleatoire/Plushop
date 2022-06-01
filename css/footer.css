@@ -1,21 +1,33 @@
+/**
+css du footer
+
+auteur : Amandine Chantome
+*/
+
 footer {
-    margin: 0;
+    position: absolute;
+    right: 0;
+    bottom: calc(0vh - 370px);
     background-color: var(--menu-color);
     color: #807d76;
-    display: block;
-    height: 10%;
-    position: relative;
-    top: calc(0vh + 150px);
-    padding: 10px;
+    width: 100%;
     height: 100px;
+    text-align: right;
 }
 
-footer>a:visited {
+footer a:hover {
     color: var(--accent);
 }
 
-footer>a {
-    text-decoration: none;
-    color: #807d76;
 
+footer a {
+    text-decoration: none;
+    padding: 0 20px;
+    color: #807d76;
+}
+
+#copyr {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 20px;
 }

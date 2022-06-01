@@ -1,0 +1,80 @@
+
+/**
+css de la page de contact
+
+auteur : Amandine Chantome
+auteur : Loic Briant
+*/
+
+.container .forms {
+    background-color: var(--head-color);
+    padding: 30px;
+    padding-left: 40px;
+    width: 80%;
+    border-radius: 7px;
+
+}
+
+.textbar2{
+    width: 30%;
+
+    padding: 0;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 5px;
+    text-indent: 10px;
+    vertical-align: middle;
+}
+.textbar3{
+    width: 30%;
+
+    padding: 0;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 5px;
+    text-indent: 10px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+.textbar2:focus{
+    
+    outline: none !important;
+    border: #b8e6df 2px solid;
+    box-shadow: 0 0 10px #b8e6df;
+}
+
+#submit2{
+    text-align: center;
+    width: 30%;
+    padding: 0;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 2px;
+    border: 1px var(--accent) solid;
+    background: #b8e6df;
+}
+
+#submit3{
+    text-align: center;
+    width: 30%;
+    padding: 0;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 2px;
+    border: 1px var(--accent) solid;
+    background: #d4e9e6;
+    margin-bottom: 20px;
+}
+
+#submit2:hover{
+    background: var(--accent);
+    color: aliceblue;
+    cursor: pointer;
+}
+
+#submit3:hover{
+    background: var(--accent);
+    color: aliceblue;
+    cursor: pointer;
+}

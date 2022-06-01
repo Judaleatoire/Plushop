@@ -1,3 +1,10 @@
+/**
+ * Ensemble de tests permettant de vérifier la validité des informations entrées par l'utilisateur au moment de la commande
+ * 
+ * author : Alexis Tourrenc--Lecerf
+ *   
+*/
+
 function verifier(){
 
     var name = document.getElementById("last_name").value;
@@ -6,6 +13,8 @@ function verifier(){
     var c_email = document.getElementById("confirm_email").value;
     var tel = document.getElementById("cell").value;
     var adresse = document.getElementById("adresse").value;
+    var ville = document.getElementById("ville").value;
+    var code = document.getElementById("code").value;
     var i = 0;
 
     if ((name == null) || (!test_nombre(name)) ||(name == "")){
@@ -45,8 +54,22 @@ function verifier(){
         document.getElementById("adresse").style.borderColor = "#09FF00";
         i++;
     }
+    if ((ville == null) || (ville == 0) || (ville == "0") || (ville == "")){
+        alert ("Entrer une ville valide");
+        document.getElementById("ville").style.borderColor = "#FF0000";
+    }else{
+        document.getElementById("ville").style.borderColor = "#09FF00";
+        i++;
+    }
+    if ((code == null) || (code == 0) || (code == "0") || (code == "")){
+        alert ("Entrer un code postal valide");
+        document.getElementById("code").style.borderColor = "#FF0000";
+    }else{
+        document.getElementById("code").style.borderColor = "#09FF00";
+        i++;
+    }
 
-    if (i == 5){
+    if (i == 7){
         return true;
     }else{
         return false;

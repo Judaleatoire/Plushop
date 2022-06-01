@@ -1,3 +1,8 @@
+/**
+css du menu sur le coté
+
+auteur : Amandine Chantome
+*/
 .piou {
   height: 100%;
   width: 0;
@@ -30,7 +35,7 @@
 }
 
 .piou a:hover {
-  color: #c6e0dc;
+  color: #b8e6df;
 }
 
 .piou a:target {
@@ -55,11 +60,8 @@
   top: 0;
   right: 25px;
   font-size: 20px;
-  /* margin-left: 5px; */
+
 }
-
-
-/*  sous categ */
 
 .piou-sous {
   list-style-type: none;

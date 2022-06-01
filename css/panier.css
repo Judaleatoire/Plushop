@@ -1,0 +1,13 @@
+/**
+css du panier
+
+auteur : Amandine Chantome
+*/
+.panier {
+    background-color: var(--head-color);
+    border-radius: 3px;
+    padding: 20px;
+    width: 85%;
+    text-decoration: none;
+    color: #333;
+}

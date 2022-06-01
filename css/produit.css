@@ -1,10 +1,17 @@
+
+/**
+css de la page produit
+
+auteur : Amandine Chantome
+auteur : François Guillerm
+*/
+
 body {
     margin: 0;
 }
 
 .container.product {
-    margin-left: calc(15vh + 55px);
-    /* max-width: 80%; */
+    margin-left: calc(15vh + 125px);
 }
 
 
@@ -20,25 +27,19 @@ body {
 }
 
 #main {
-    margin: 1% auto;
-    width: 75%;
-    /* height: 600px; */
-    /* height: 51%; */
-    /* background-color: blue; */
+    width: 85%;
+
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     background-color: var(--head-color);
-    border-radius: 20px;
+    border-radius: 7px;
 }
 
 #choix {
-    /* padding: 15px; */
-    /* background-color: green; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* margin-top: 1%; */
     margin: 20px;
 }
 
@@ -49,28 +50,31 @@ body {
 
 .choix-image {
     width: 75px;
-    border-radius: 10px;
-    /* height: 100%; */
+    border-radius: 7px;
 }
 
 .choix-image-active {
-    /* border: solid 3px var(--accent); */
     outline: solid 3px var(--accent);
 }
 
 #image {
     display: flex;
-    /* background-color: orange; */
-
     width: 600px;
-    /* width: 35%; */
 }
 
 #image-principale {
     width: 90%;
-    border-radius: 20px;
+    border-radius: 7px;
     margin: 20px;
+    transition: transform .3s; 
 }
+
+#image-principale:hover{
+    -ms-transform: scale(1.5); 
+    -webkit-transform: scale(1.5); 
+    transform: scale(1.5);
+    border: var(--head-color) 5px solid;    
+} 
 
 #mainInfo {
     display: flex;
@@ -78,51 +82,37 @@ body {
     justify-content: center;
     width: 30%;
     padding: 10px;
-    /* background-color: aqua; */
+
 }
 
 .infos {
     margin: 0 auto;
     padding: 10px;
-    /* background: rgba(247, 240, 226, 1); */
+
 }
 
-/* #mainInfo>div {
-    margin-left: 40%;
-    margin-top: 5%;
-} */
+#mainInfos .infos .nom {
+    color: var(--accent);
+    font-size: 20px;
+}
 
 #quantite {
     width: 5%;
 }
 
 #suppInfo {
-    margin: 1%;
-    width: 98%;
-    background-color: red;
+    margin: 1% 0;
+    width: 85%;
+    background-color: var(--head-color);
+    border-radius: 7px;
+    padding: 20px;
 }
 
-#sugg {
-    margin: 1%;
-    width: 98%;
-    background-color: yellow;
+#suppInfo h2 {
+    margin: 0;
+    margin-bottom: 10px;
 }
 
-#sugg-produits {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#sugg-produits>img {
-    margin: 10px;
-    height: 100%;
-    width: 15%;
-}
-
-
-
-/* CSS */
 .button-48 {
     appearance: none;
     background-color: #FFFFFF;
@@ -135,7 +125,7 @@ body {
     line-height: 1em;
     margin: 0;
     opacity: 1;
-    padding: 1em 2em;
+    padding: 0.7em 2em;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -152,7 +142,9 @@ body {
     backface-visibility: hidden;
     background-color: var(--accent);
     clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
-    content: "";
+    content: "Ajouter au panier";
+    color: aliceblue;
+    padding-top: 0.7em;
     height: 100%;
     left: 0;
     position: absolute;
@@ -168,10 +160,53 @@ body {
 }
 
 .button-48:after {
-    background-color: #FFFFFF;
+    background-color: var(--head-color);
 }
 
 .button-48 span {
     z-index: 1;
     position: relative;
+}
+
+
+form #zone-ajout-panier input {
+    padding: 5px;
+    width: 50px;
+    text-align: center;
+    border: #c2c2c2 1px solid;
+}
+
+form #zone-ajout-panier button {
+    width: 30px;
+    text-align: center;
+    background-color: #b8e6df;
+    margin: 0;
+    padding: 5px 5px;
+    border: none;
+}
+
+form #zone-ajout-panier button:hover {
+
+    background-color: var(--accent);
+
+}
+
+form #zone-ajout-panier {
+    margin: 10px 0;
+}
+
+.infos .nom{
+    color: rgb(11, 112, 116);
+    font-weight: bold;
+}
+.infos .prix .ancien_prix{
+    color: rgb(156, 156, 156);
+    text-decoration:line-through;
+    padding-right: 10px;
+}
+
+.infos .prix .solde{
+    color: rgb(33, 180, 185);
+    font-size: larger;
+    font-weight: bold;
 }

@@ -1,4 +1,16 @@
 <?php
+
+/**
+     * Cette fonction permet de vérifier les informations remplies par l'utilisateur dans info.php
+     * 
+     * on verifie si chaque input correspond au bon pattern ou s'il n'est pas vide.
+     * 
+     * 
+     * 
+     * @author Alexis Tourrenc--Lecerf
+*/
+
+
     function test (){
         if(!empty($_POST)){
             if (($_POST['nom'] == "") || (preg_match('/[a-z]/', $_POST['nom']))){

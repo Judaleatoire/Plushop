@@ -1,16 +1,17 @@
-body{
-    margin: 0;
-    background-color: white;
-    cursor: default;
-}
+/**
+css de la de connexion
 
-a:link{
-    color: orange;
+auteur : Amandine Chantome
+auteur : Loic Briant
+*/
+
+.containerLog a:link{
+    color: var(--accent);
     text-decoration: none;
 }
 
-a:visited{
-    color: orange;
+.containerLog a:visited{
+    color: var(--accent);
     text-decoration: none;
 }
 input:focus::placeholder {
@@ -18,33 +19,24 @@ input:focus::placeholder {
 }
 
 
-#logo{
-    width: 100px;
-	margin-left: 50%;
-	margin-top: 2%;
-    transform: translate(-50%);
-}
-
-form{
+#id{
     width: 500px;
 	margin-left: 50%;
 	margin-top: 2%;
     transform: translate(-50%);
     border: black solid 1px;
-    border-radius: 7px;
+    border-radius: 5px;
+    background-color:  var(--head-color);
+    font-family: var(--main-font) ;
 }
-form > *{
+#id > *{
     
     margin: 10px 25px 10px 25px;
     display: inline-block;
 }
 
-#Title{
-    width: calc(100% - 50px);
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-size: 48px;
-}
+
+
 
 #remember{
     margin-right: 10px;
@@ -61,7 +53,7 @@ form > *{
 
 #text_remember{
     margin-left: 0;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 #text_remember:hover{
@@ -75,9 +67,10 @@ form > *{
 
 .textbar{
     width: calc(100% - 50px);
+
     padding: 0;
     height: 40px;
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 5px;
     text-indent: 10px;
     vertical-align: middle;
@@ -86,8 +79,8 @@ form > *{
 .textbar:focus{
     
     outline: none !important;
-    border: rgb(250, 167, 13) 2px solid;
-    box-shadow: 0 0 10px rgb(250, 167, 13);
+    border: #b8e6df 2px solid;
+    box-shadow: 0 0 10px #b8e6df;
 }
 
 
@@ -97,34 +90,32 @@ form > *{
     width: calc(100% - 50px);
     padding: 0;
     height: 40px;
-    font-size: 20px;
-    border-radius: 5px;
-    border: rgb(230, 149, 0) 2px solid;
-    background: linear-gradient(rgb(255, 201, 100),rgb(255, 188, 62));
+    font-size: 16px;
+    border-radius: 2px;
+    border: 1px var(--accent) solid;
+    background: #b8e6df;
 }
 
 #submit:hover{
-    background: linear-gradient(rgb(255, 201, 100),orange);
+    background: var(--accent);
+    color: aliceblue;
     cursor: pointer;
 }
+
 
 #New_account{
     width: calc(100% - 50px);
     padding: 0;
     height: 40px;
     border-radius: 5px;
-    border: rgb(230, 149, 0) 2px transparent;
+    border: var(--accent) 2px transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(255, 136, 0);
-    font-size: 20px;
+    color: var(--accent);
+    font-size: 16px;
 }
 
-#New_account:hover{
-    background:rgb(255, 166, 0,0.5);
-    text-decoration: none;
-}
 
 #Forget_Password{
     float: right;
@@ -132,5 +123,11 @@ form > *{
 
 label{
     margin-bottom: 0;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.containerLog {
+    position: relative;
+    top: calc(0vh + 170px);
+    z-index: 0;
 }

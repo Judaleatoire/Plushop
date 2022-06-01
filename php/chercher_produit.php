@@ -1,8 +1,6 @@
 <?php
 
     /**
-     * Exemple de commentaire standard/conventionnel
-     * 
      * Cette fonction permet de chercher un produit dans le fichier csv correspondant.
      * 
      * On lit le fichier ligne par ligne et on renvoit un tableau associatif contenant 
@@ -14,6 +12,8 @@
      * 
      * @return array    Tableau associatif du produit cherché
      * @return int      On renvoie -1 si le produit n'a pas été trouvé
+     * 
+     * @author François Guillerm
     */
     
     //On inclue un fichier nécessaire au fonctionnement de la fonction

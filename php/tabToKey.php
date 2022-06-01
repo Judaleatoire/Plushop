@@ -1,6 +1,15 @@
 <?php
+
+    /**
+     * Fonction permettant de transformer un tableau indicé en un tableau associatif.
+     * Cette fonction est utilisée dans des cas précise seulement et n'est pas modulable.
+     * 
+     * @param array     $tab Tableau à convertir
+     * 
+     * @author François Guillerm
+    */
+
     function tabToKey($tab) {
-        // []
         $tabKey = array(
             "ref" => $tab[0],
             "nom" => $tab[1],

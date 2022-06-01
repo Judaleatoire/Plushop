@@ -1,3 +1,9 @@
+/**
+css des catégories 
+
+auteur : Amandine Chantome
+*/
+
 body {
     margin: 0;
 }
@@ -24,6 +30,40 @@ body {
     color: var(--text-main-color);
 }
 
+.produits .lien-produit .desc{
+    padding-top: 10px;
+    width: 240px;
+    margin-left: 20px;
+}
+
+.produits .lien-produit .desc .descnp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+
+.produits .lien-produit .desc .descnp .nom-produit{
+    color: var(--accent);
+    font-weight: bold;
+}
+
+
+ .produits .lien-produit .desc .nv_prix .solde{
+    color: rgb(33, 180, 185);
+    padding-right: 5px;
+    font-size: larger;
+    font-weight: bold;
+} 
+.produits .lien-produit .desc .nv_prix{
+    text-align: right;
+} 
+.produits .lien-produit .desc .ancien-prix-produit{
+    color: rgb(156, 156, 156);
+    text-decoration:line-through;
+} 
+
+
+
 .produits>a>img {
     display: block;
     width: 250px;
@@ -31,12 +71,33 @@ body {
     margin: auto;
     margin-top: 20px;
     border-radius: 7px;
-    /* https://shadows.brumm.af/ */
     box-shadow:
         1.2px 1.2px 3.6px rgba(0, 0, 0, 0.024),
         3.4px 3.3px 10px rgba(0, 0, 0, 0.035),
         8.1px 7.8px 24.1px rgba(0, 0, 0, 0.046),
         27px 26px 80px rgba(0, 0, 0, 0.07);
-    /* margin: 30px; */
+}
+
+
+#filtres button {
+    background-color: var(--head-color);
+    margin: 0;
+    padding: 0 10px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    padding-bottom: 5px;
+}
+
+#filtres button i{
+    font-size: 25px;
+    padding-right: 5px;
+    padding-top: 2px;
+}
+
+
+#filtres button:hover {
+    background-color: #b8e6df;
+
 }
 
